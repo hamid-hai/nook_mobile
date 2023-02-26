@@ -1,13 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 export const Header = () => {
         return(
-            <View style={styles.header}>
+            <SafeAreaView style={styles.header}>
                 <Text style={styles.titleFormat}>
                      Nook Mobile
                 </Text>
-            </View>
+            </SafeAreaView>
         )
     }
 
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     titleFormat: {
-        padding: 20,
+        padding: 0,
         fontSize: 30,
         fontWeight: 'bold',
         color: '#e2f7ec',  
