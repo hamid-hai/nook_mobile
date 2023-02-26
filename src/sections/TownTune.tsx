@@ -1,9 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default class TownTune extends React.Component {
+export const TownTune = () => {
 
-    render() {
         return(
             <View style={styles.box}>
                     <Text style={styles.inner}>
@@ -12,7 +11,7 @@ export default class TownTune extends React.Component {
             </View>
         )
     }
-}
+
 
 const styles = StyleSheet.create({
     container: {

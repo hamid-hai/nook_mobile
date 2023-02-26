@@ -1,12 +1,12 @@
 import {StyleSheet, View } from 'react-native';
-import Controls from './Controls';
-import TownTune from './TownTune';
-import GamePicker from './GamePicker';
+import {Controls} from './Controls';
+import {TownTune} from './TownTune';
+import {GamePicker} from './GamePicker';
 import React from 'react';
-import Header from './Header';
+import {Header} from './Header';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-export default function App() {
+export const HomeScreen = () => {
   return(
     <SafeAreaProvider>
     <View style={styles.container}>

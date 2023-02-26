@@ -1,9 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default class Controls extends React.Component {
-
-    render() {
+export const Controls = () => {
         return(
             <View style={styles.box}>
                     <Text style={styles.inner}>
@@ -11,7 +9,6 @@ export default class Controls extends React.Component {
                     </Text>
             </View>
         )
-    }
 }
 
 const styles = StyleSheet.create({

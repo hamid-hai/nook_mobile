@@ -1,9 +1,7 @@
 import React from "react";
 import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
 
-export default class GamePicker extends React.Component {
-
-    render() {
+export const GamePicker = () => {
         return(
             <View style={styles.box}>
                     <Text style={styles.inner}>
@@ -18,7 +16,6 @@ export default class GamePicker extends React.Component {
             </View>
         )
     }
-}
 
 const styles = StyleSheet.create({
     container: {
@@ -26,7 +23,8 @@ const styles = StyleSheet.create({
         height: '85%',
         padding: 5,
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        alignSelf: 'center',
     },
     box: {
         width: '100%',
