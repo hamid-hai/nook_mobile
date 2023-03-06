@@ -2,6 +2,20 @@
   "name": "nook_mobile",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
+  "rnpm": {
+    "assets": [
+      "./assets/audio",
+      "./assets/fonts",
+      "./assets/icons"
+    ],
+    "files": {
+      "assets": [
+        "./assets/audio",
+        "./assets/fonts",
+        "./assets/icons"
+      ]
+    }
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -21,7 +35,8 @@
     "react-native-dropdown-picker": "^5.4.4",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-picker-select": "^8.0.4",
-    "react-native-select-dropdown": "^3.3.0"
+    "react-native-select-dropdown": "^3.3.0",
+    "react-native-track-player": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
