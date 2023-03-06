@@ -1,24 +1,26 @@
-import {StyleSheet, View } from 'react-native';
-import {Controls} from './Controls';
-import {TownTune} from './TownTune';
-import {GamePicker} from './GamePicker';
+import { StyleSheet, View } from 'react-native';
+import { Controls } from './Controls';
+import { TownTune } from './TownTune';
+import { GamePicker } from './GamePicker';
+import { Buttons } from './Buttons';
 import React from 'react';
-import {Header} from './Header';
+import { Header } from './Header';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export const HomeScreen = () => {
-  return(
+  return (
     <SafeAreaProvider>
-    <View style={styles.container}>
-      <Header />
-      <GamePicker />
-      <Controls />
-      <TownTune />
-    </View>
+      <View style={styles.container}>
+        <Header />
+        <GamePicker />
+        <Controls />
+        <Buttons />
+        {/* <TownTune /> */}
+      </View>
     </SafeAreaProvider>
-)
+  )
 }
-  
+
 
 const styles = StyleSheet.create({
   container: {
