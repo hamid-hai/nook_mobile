@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import RNPickerSelect from 'react-native-picker-select';
 import { Alert, StyleSheet, Text, View } from "react-native";
-// import { ButtonsController } from "./Buttons";
 import { Audio } from "expo-av";
-import { ButtonsController } from "./Buttons";
+
 const gamesSelection = ["Population Growing", "Wild World/City Folk", "New Leaf", "New Horizons"]
 const wildWorldSound = 'https://d17orwheorv96d.cloudfront.net/wild-world/1am.ogg - https://d17orwheorv96d.cloudfront.net/population-growing/1am.ogg'
 
@@ -12,13 +11,33 @@ const wildWorldSound = 'https://d17orwheorv96d.cloudfront.net/wild-world/1am.ogg
 
 export const GamePicker = () => {
     const [audio, setAudio] = useState<Audio.Sound>()
+
+
     const dateTime = new Date()
     const dateTimeHours = dateTime.getHours()
 
+    const animalCrossingGames = [
+        {
+            label: 'Population Growing',
+            value: 'PG',
+        },
+        {
+            label: 'Wild World/City Folk',
+            value: 'WWCF',
+        },
+        {
+            label: 'New Leaf',
+            value: 'NL',
+        },
+        {
+            label: 'New Horizons',
+            value: 'NH',
+        },
+    ];
+
     const getAudio = async () => {
         console.log(dateTimeHours + 'Hours')
-        // load the audio from online source - probs the best method tbh
-        const { sound } = await Audio.Sound.createAsync({ uri: 'https://github.com/hamid-hai/nook_mobile/blob/main/src/assets/audio/PG/' + dateTimeHours + '.mp3?raw=true' })
+        const { sound } = await Audio.Sound.createAsync({ uri: 'https://github.com/hamid-hai/nook_mobile/blob/main/src/assets/audio/WWCF/' + dateTimeHours + '.mp3?raw=true' })
         console.log('Creating async')
 
         // load the audio from assets
@@ -68,15 +87,14 @@ export const GamePicker = () => {
             </Text>
 
             <RNPickerSelect
-                placeholder={{}}
+                placeholder={{
+                    label: 'Select a game!',
+                    value: null,
+                    color: '#9EA0A4'
+                }}
                 textInputProps={styles.inner}
                 onValueChange={getAudio}
-                items={[
-                    { label: 'Population Growing', value: 'PG' },
-                    { label: 'Wild World/City Folk', value: 'WWCF' },
-                    { label: 'New Leaf', value: 'NL' },
-                    { label: 'New Horizons', value: 'NH' },
-                ]}
+                items={animalCrossingGames}
             />
 
         </View>
