@@ -55,10 +55,10 @@ export const ButtonsController = () => {
         <View style={styles.row}>
 
             {/* Get audio should be tied to picker to automatically download files depending on the chosen game */}
-            <Pressable
+            {/* <Pressable
                 onPress={getAudio}>
                 <Image style={styles.image} source={require('../assets/icons/download-icon.png')} />
-            </Pressable>
+            </Pressable> */}
 
             {/* Play and Pause can be combined into one button, these control the file locally without having to re-download the file each time */}
             <Pressable
