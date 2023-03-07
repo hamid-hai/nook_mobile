@@ -4,7 +4,7 @@ import { Audio } from 'expo-av';
 
 
 
-export const Buttons = () => {
+export const ButtonsController = () => {
     const [audio, setAudio] = useState<Audio.Sound>()
 
     const getAudio = async () => {

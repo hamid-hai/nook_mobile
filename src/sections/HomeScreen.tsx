@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { Controls } from './Controls';
 import { TownTune } from './TownTune';
 import { GamePicker } from './GamePicker';
-import { Buttons } from './Buttons';
+import { ButtonsController } from './Buttons';
 import React from 'react';
 import { Header } from './Header';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -14,7 +14,7 @@ export const HomeScreen = () => {
         <Header />
         <GamePicker />
         <Controls />
-        <Buttons />
+        <ButtonsController />
         {/* <TownTune /> */}
       </View>
     </SafeAreaProvider>
