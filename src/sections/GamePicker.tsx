@@ -1,13 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RNPickerSelect from 'react-native-picker-select';
 import { Alert, StyleSheet, Text, View } from "react-native";
-import SelectDropdown from 'react-native-select-dropdown'
-import { Player } from '@react-native-community/audio-toolkit';
-import AudioPlayer from 'react-h5-audio-player';
-
+// import { ButtonsController } from "./Buttons";
+import { Audio } from "expo-av";
+import { ButtonsController } from "./Buttons";
 const gamesSelection = ["Population Growing", "Wild World/City Folk", "New Leaf", "New Horizons"]
-const wildWorldSound = 'https://d17orwheorv96d.cloudfront.net/wild-world/1am.ogg'
+const wildWorldSound = 'https://d17orwheorv96d.cloudfront.net/wild-world/1am.ogg - https://d17orwheorv96d.cloudfront.net/population-growing/1am.ogg'
+
+// https://github.com/hamid-hai/nook_mobile/blob/main/src/assets/audio/PG/14.mp3?raw=true
+
+
 export const GamePicker = () => {
+    const [audio, setAudio] = useState<Audio.Sound>()
+    const dateTime = new Date()
+    const dateTimeHours = dateTime.getHours()
+
+    const getAudio = async () => {
+        console.log(dateTimeHours + 'Hours')
+        // load the audio from online source - probs the best method tbh
+        const { sound } = await Audio.Sound.createAsync({ uri: 'https://github.com/hamid-hai/nook_mobile/blob/main/src/assets/audio/PG/' + dateTimeHours + '.mp3?raw=true' })
+        console.log('Creating async')
+
+        // load the audio from assets
+        // const { sound } = await Audio.Sound.createAsync(require('./assets/1am.mp3'))
+
+        // sets the audio state to the newly retrieved sound
+        setAudio(sound)
+        console.log('Setting Audio')
+
+        // plays the audio and sets to loop
+        sound.setIsLoopingAsync(true)
+        console.log('Set Looping to True')
+        await sound.playAsync()
+        console.log('Waiting for playAudio function')
+    }
+
+    const playAudio = async () => {
+        await audio?.playAsync()
+        console.log('Playing audio from playAudio')
+    }
+
+    const pauseAudio = async () => {
+        await audio?.pauseAsync()
+        console.log('Pausing audio')
+    }
+
+    // stops audio from playing and sets state back to undefined
+    const stopAudio = async () => {
+        await audio?.stopAsync()
+        setAudio(undefined)
+        console.log('Audio stopped from stopAudio')
+    }
+
+    useEffect(() => {
+        return () => {
+            console.log('unloading sound')
+            audio ? audio.unloadAsync() : undefined
+        }
+
+    }, [audio])
 
     return (
         <View style={styles.container}>
@@ -19,7 +70,7 @@ export const GamePicker = () => {
             <RNPickerSelect
                 placeholder={{}}
                 textInputProps={styles.inner}
-                onValueChange={(value) => console.log(value + ' Game Selected')}
+                onValueChange={getAudio}
                 items={[
                     { label: 'Population Growing', value: 'PG' },
                     { label: 'Wild World/City Folk', value: 'WWCF' },
