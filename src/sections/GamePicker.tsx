@@ -37,7 +37,7 @@ export const GamePicker = () => {
 
     const getAudio = async (value: Text) => {
         console.log(dateTimeHours + 'Hours')
-        const { sound } = await Audio.Sound.createAsync({ uri: 'https://github.com/hamid-hai/nook_mobile/blob/main/src/assets/audio/' + value + '/' + dateTimeHours + '.mp3?raw=true' })
+        const { sound } = await Audio.Sound.createAsync({ uri: `https://github.com/hamid-hai/nook_mobile/blob/main/src/assets/audio/${value}/${dateTimeHours}.mp3?raw=true` })
         console.log('Creating async')
 
         // load the audio from assets
