@@ -35,34 +35,36 @@ export const GamePicker = () => {
         },
     ];
 
-    const getAudio = async (value: Text) => {
+    const getAudio = async (value: String) => {
+        if (value === 'NG') {
+            console.log('No audio selected, stopping stream')
+            return stopAudio()
+        }
         console.log(dateTimeHours + 'Hours')
         const { sound } = await Audio.Sound.createAsync({ uri: `https://github.com/hamid-hai/nook_mobile/blob/main/src/assets/audio/${value}/${dateTimeHours}.mp3?raw=true` })
-        console.log('Creating async')
 
         // load the audio from assets
         // const { sound } = await Audio.Sound.createAsync(require('./assets/1am.mp3'))
 
         // sets the audio state to the newly retrieved sound
         setAudio(sound)
-        console.log('Setting Audio')
+        console.log('Setting Audio with setAudio')
 
         // plays the audio and sets to loop
         sound.setIsLoopingAsync(true)
-        console.log('Set Looping to True')
+        console.log('Looping set to True')
         await sound.playAsync()
-        console.log('Waiting for playAudio function')
     }
 
-    const playAudio = async () => {
-        await audio?.playAsync()
-        console.log('Playing audio from playAudio')
-    }
+    // const playAudio = async () => {
+    //     await audio?.playAsync()
+    //     console.log('Playing audio from playAudio')
+    // }
 
-    const pauseAudio = async () => {
-        await audio?.pauseAsync()
-        console.log('Pausing audio')
-    }
+    // const pauseAudio = async () => {
+    //     await audio?.pauseAsync()
+    //     console.log('Pausing audio')
+    // }
 
     // stops audio from playing and sets state back to undefined
     const stopAudio = async () => {
@@ -89,7 +91,7 @@ export const GamePicker = () => {
             <RNPickerSelect
                 placeholder={{
                     label: 'Select a game!',
-                    value: null,
+                    value: 'NG',
                     color: '#9EA0A4'
                 }}
                 textInputProps={styles.inner}
