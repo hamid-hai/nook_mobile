@@ -8,7 +8,7 @@ export const ButtonsController = () => {
     const [audio, setAudio] = useState<Audio.Sound>()
 
     const getAudio = async () => {
-        // load the audio from online source - probs the best method tbh
+        // load the audio from online source
         const { sound } = await Audio.Sound.createAsync({ uri: 'https://github.com/hamid-hai/nook_mobile/raw/main/src/assets/audio/1am.mp3' })
         console.log('Creating async')
 
@@ -59,23 +59,23 @@ export const ButtonsController = () => {
                 onPress={getAudio}>
                 <Image style={styles.image} source={require('../assets/icons/download-icon.png')} />
             </Pressable> */}
-
-            {/* Play and Pause can be combined into one button, these control the file locally without having to re-download the file each time */}
-            <Pressable
+            {/* 
+            Play and Pause can be combined into one button, these control the file locally without having to re-download the file each time */}
+            {/* <Pressable
                 onPress={playAudio}>
                 <Image style={styles.image} source={require('../assets/icons/play-icon.png')} />
-            </Pressable>
+            </Pressable> */}
 
-            <Pressable
+            {/* <Pressable
                 onPress={pauseAudio}>
                 <Image style={styles.image} source={require('../assets/icons/pause-icon.png')} />
-            </Pressable>
+            </Pressable> */}
 
             {/* Stop audio isn't exactly needed at this stage, but kills off the audio functionality and dumps the file. */}
-            <Pressable
+            {/* <Pressable
                 onPress={stopAudio}>
                 <Image style={styles.image} source={require('../assets/icons/stop-icon.png')} />
-            </Pressable>
+            </Pressable> */}
         </View>
     )
 }

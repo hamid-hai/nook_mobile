@@ -13,7 +13,7 @@ export const HomeScreen = () => {
       <View style={styles.container}>
         <Header />
         <GamePicker />
-        <Controls />
+        {/* <Controls /> */}
         <ButtonsController />
         {/* <TownTune /> */}
       </View>
