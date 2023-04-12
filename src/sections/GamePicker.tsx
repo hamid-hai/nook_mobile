@@ -35,7 +35,16 @@ export const GamePicker = () => {
         },
     ];
 
+    // https://api.weatherbit.io/v2.0/current?city=Manchester&country=GB&key=4e47c36e398f4c738bc48bdbfdc8eb2d
+    // Weather API, using https://www.weatherbit.io
+    // Currently pulls weather location manually, but plans to move to a location based system from iOS.
+
+    const getWeather = async (weatherData: String) => {
+        const apiCondition = await fetch('https://api.weatherbit.io/v2.0/current?city=Manchester&country=GB&key=4e47c36e398f4c738bc48bdbfdc8eb2d')
+        return weatherData = await apiCondition.json(), console.log(weatherData)
+    }
     const getAudio = async (value: String) => {
+        getWeather('')
         if (value === 'NG') {
             console.log('No audio selected, stopping stream')
             return stopAudio()
